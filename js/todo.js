@@ -3,12 +3,21 @@ const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 const toDo = toDoList.querySelector("li");
 
+function deleteToDo(e) {
+  const li = e.target.parentElement;
+  li.remove();
+}
+
 // Todo를 그림
 function paintTodo(newTodo) {
   const li = document.createElement("li");
   const span = document.createElement("span");
   span.innerHTML = newTodo;
+  const button = document.createElement("button");
+  button.innerHTML = "✂";
+  button.addEventListener("click", deleteToDo);
   li.appendChild(span);
+  li.appendChild(button);
   toDoList.appendChild(li);
 }
 
