@@ -3,6 +3,12 @@ const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 const toDo = toDoList.querySelector("li");
 
+const toDos = [];
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(toDos));
+}
+
 function deleteToDo(e) {
   const li = e.target.parentElement;
   li.remove();
@@ -26,7 +32,9 @@ function handleToDoSubmit(e) {
   //   input의 현재 value를 새로운 변수에 복사
   const newTodo = toDoInput.value;
   toDoInput.value = "";
+  toDos.push(newTodo);
   paintTodo(newTodo);
+  saveTodos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
