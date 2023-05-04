@@ -1,4 +1,5 @@
 const clock = document.querySelector("h2#clock");
+getClock();
 
 function getClock() {
   const date = new Date();
@@ -8,8 +9,6 @@ function getClock() {
   clock.innerHTML = `${hour}:${min}:${sec}`;
 }
 
-getClock();
-
 clock.innerHTML = setInterval(() => {
   getClock();
-}, 100);
+}, 1000);
